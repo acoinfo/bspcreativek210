@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="GB2312" standalone="no"?>
+<SylixOSSetting>
+<BaseSetting Profile="lite" ProjectType="SylixOSBspProject" RealEvoVer="3.9.1 Ultimate"/>
+<OutputSetting>
+<OutputPath Name="Output" Path="Release:Debug" TreeNode="Output"/>
+<OutputPath Name="Debug" Path="Debug" TreeNode="Debug"/>
+<OutputPath Name="Release" Path="Release" TreeNode="Release"/>
+</OutputSetting>
+<BuildSetting CoustomCfgMakefile="false" NeedReBuild="false" NotScanSourceFile="false"/>
+<BspSetting TemplatePath="/bsp/riscv/riscv-lite-none"/>
+<FileFilter>
+
+
+
+
+
+
+
+
+
+<PairItem key="SylixOS/driver/video/video_dummy" value="arm|sparc"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<PairItem key="SylixOS/user/test" value="arm|sparc"/>
+<PairItem key="SylixOS/liblvgl" value="arm|sparc"/>
+<PairItem key="SylixOS/driver/kpu" value="arm|sparc"/>
+</FileFilter>
+<UploadPath/>
+</SylixOSSetting>

@@ -1,0 +1,34 @@
+video-core 源码文件简要说明:
+
+* 异步绑定 video_device 和 sub_device
+主要涉及的文件为: videoAsync.c  videoCard.c  videoSubDev.c,  当然这里也支持同步绑定的方式。
+当使用异步绑定时，用户可以将 camera-controller-driver 和 image-sensor-processor-driver 分开实现。
+当使用同步绑定时，用户可以将 camera-controller-driver 和 image-sensor-processor-driver 一起实现(适合单总线连接方式，如: USB)。
+
+* 灵活的字符设备驱动注册方式
+主要涉及的文件为: videoDevice.c 。
+当用户想要基于 video-core 框架提供的"管理模型"时，只需要将 fileoperations 中对应的函数绑定为框架所提供的接口，并实现框架所要求实现的部分函数即可。
+当用户不想使用  video-core 框架提供的"管理模型"时，只需要把自己实现的 ops 赋值给 fileoperations 即可。
+
+* 框架提供 ioctl 管理模型
+主要涉及的文件为: videoBufCore.c 
+主要用于处理各种类型的内存分配和管理。内存类型: 
+被分散在物理和内核虚拟空间的缓冲，几乎所有用户空间缓冲都是这种类型; 物理上离散的但是虚拟地址是连续的，即用
+vmalloc分配的内存缓冲，这些缓冲很难用于DMA操作; 物理上连续的缓冲。根据选择的类型，包含include/media下不同
+的头文件: videobuf-dma-sg.h , videobuf-vmalloc.h , videobuf-dma-contig.h 。
+
+* 框架提供 video_buffer 管理模型
+主要涉及的文件为: videoIoctl.c
+将IOCTL命令分为标准命令(IOCTL_FL_STD)和功能命令(IOCTL_FL_FUNC)， IOCTL_FL_STD 通过调用框架的接口实现，IOCTL_FL_FUNC 通过调用具体设备驱动所实现的ops。
+
+
+由于sylixos的video.h文件中 IOCTL 命令和结构体的定义和Linux中IOCTL命令和结构体的定义有较大差异，所以做如下工作: 
+1) 根据 __deviceDescriptionGet 重新定义 v4l2_ioctl_ops 函数接口
+2) 根据 __deviceDescriptionGet 重新定义 video buffer operations 函数接口
+3) 根据 __deviceDescriptionGet 重新定义 sub device operations 函数接口        *
+
+还有4个文件没有改，还有上面2个接口没有改。
+
+API_MsgQueueSend2(kdb_xinput.queue, (void *)&knotify,
+                                                 (u_long)temp, LW_OPTION_WAIT_INFINITE);
+                                SEL_WAKE_UP_ALL(&kdb_xinput.sel_list, SELREAD);
