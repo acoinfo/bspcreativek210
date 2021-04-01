@@ -25,11 +25,11 @@
 #include <string.h>
 #include <timer.h>
 #include "k210_rtc.h"
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
 #include <linux/compat.h>
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/rtc.h"
 /*********************************************************************************************************
   ∂®“Â

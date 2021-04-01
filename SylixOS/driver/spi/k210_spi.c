@@ -26,10 +26,10 @@
 #include "k210_spi.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/dmac/k210_dma.h"
-#include "driver/common.h"
 #include "driver/fix_arch_def.h"
 #include "driver/spi_sdi/sdcard.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/spi.h"
 #include "KendryteWare/include/plic.h"
 /*********************************************************************************************************

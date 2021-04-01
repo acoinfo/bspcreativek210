@@ -22,7 +22,6 @@
 #include "SylixOS.h"
 #include "config.h"
 #include <linux/compat.h>
-#include "driver/common.h"
 #include "driver/fix_arch_def.h"
 #include "driver/clock/k210_clock.h"
 #include "netdev.h"
@@ -30,6 +29,7 @@
 #include "driver/gpiohs/k210_gpiohs.h"
 #include "driver/spi/k210_spi.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/gpiohs.h"
 #include "KendryteWare/include/fpioa.h"
 /*********************************************************************************************************
@@ -1098,13 +1098,6 @@ static void  __dm9051Watchdog (struct netdev  *netdev)
     UINT8   nsr, ncr;
     int     linkup;
     UINT16  uiValue;
-    uint8_t link_status = 0;
-
-#if 0 //MAC LINK STATUS
-    link_status = __dm9051Read(pNetInfo, DM9051_NSR);
-    link_status = __dm9051Read(pNetInfo, DM9051_NSR);
-    netif_debug("[__dm9051Watchdog]: link_status = 0x%x\r\n", link_status);
-#endif
 
     API_InterVectorDisable(pNetInfo->ENET_ulIrqLine);
 

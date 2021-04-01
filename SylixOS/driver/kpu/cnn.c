@@ -4,7 +4,7 @@
 #include "config.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
-#include "driver/common.h"
+#include "KendryteWare/include/common.h"
 
 #include "cnn.h"
 #include <stdio.h>

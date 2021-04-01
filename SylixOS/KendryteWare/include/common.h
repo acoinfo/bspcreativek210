@@ -16,6 +16,11 @@
 #ifndef SYLIXOS_DRIVER_COMMON_H_
 #define SYLIXOS_DRIVER_COMMON_H_
 
+#define  __SYLIXOS_KERNEL
+#include "SylixOS.h"
+#include "linux/compat.h"
+#include "io.h"
+
 #ifdef __cplusplus
 #include <cstdbool>
 #include <cstddef>
@@ -58,6 +63,11 @@
  *  Double Word    | dword        |      64
  *
  */
+
+uint32_t get_bit_mask(volatile uint32_t* bits, uint32_t mask);
+void set_bit_mask(volatile uint32_t* bits, uint32_t mask, uint32_t value);
+uint32_t get_bit_idx(volatile uint32_t* bits, size_t idx);
+void set_bit_idx(volatile uint32_t* bits, size_t idx, uint32_t value);
 
 /**
  * @brief       Write the 8 bit byte to the destination address in device memory.

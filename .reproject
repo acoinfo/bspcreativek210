@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="GB2312" standalone="no"?>
 <SylixOSSetting>
-<BaseSetting Profile="lite" ProjectType="SylixOSBspProject" RealEvoVer="3.9.1 Ultimate"/>
+<BaseSetting Profile="lite" ProjectType="SylixOSBspProject" RealEvoVer="3.9.1 Ultimate" TlsVersion="default"/>
 <OutputSetting>
 <OutputPath Name="Output" Path="Release:Debug" TreeNode="Output"/>
 <OutputPath Name="Debug" Path="Debug" TreeNode="Debug"/>

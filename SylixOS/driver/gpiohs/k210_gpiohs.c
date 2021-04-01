@@ -22,14 +22,13 @@
 #include "config.h"
 #include "SylixOS.h"
 #include "driver/gpiohs/k210_gpiohs.h"
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/gpio_common.h"
 #include "KendryteWare/include/gpiohs.h"
 #include "KendryteWare/include/plic.h"
 #include "KendryteWare/include/fpioa.h"
-#include "KendryteWare/include/io.h"
 /*********************************************************************************************************
   ∂®“Â
 *********************************************************************************************************/

@@ -21,10 +21,10 @@
 #define __SYLIXOS_KERNEL
 #include "config.h"
 #include "SylixOS.h"
-#include "driver/common.h"
 #include "driver/clock/clock.h"
 #include "driver/gpio/k210_gpio.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/fpioa.h"
 #include "KendryteWare/include/gpio.h"
 #include "KendryteWare/include/plic.h"

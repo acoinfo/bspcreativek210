@@ -398,6 +398,7 @@ static VOID  halDrvInit (VOID)
     gpiohs_set_drive_mode(7, GPIO_DM_OUTPUT);
     spi_set_clk_rate(SPI_DEVICE_1, 200000);                             /*  set clk rate                */
 
+#if (LW_CFG_SDCARD_EN > 0)
     /*
      * SD chip select high
      */
@@ -407,6 +408,8 @@ static VOID  halDrvInit (VOID)
     spiplatops.SPIPO_pfuncChipSelect = (PVOID)k210SdiChipSelect;
     spisdiLibInit(&spiplatops);
     spisdiDrvInstall(1, 3, SPI_SDI_PIN_NONE, SPI_SDI_PIN_NONE);         /*  注意: 此处 sdcard 使用 spi1 */
+#endif
+
 #endif
 
 }

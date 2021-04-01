@@ -21,10 +21,10 @@
 #define  __SYLIXOS_KERNEL
 #include "SylixOS.h"
 #include "config.h"
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/i2c/k210_i2c.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/plic.h"
 #include "KendryteWare/include/i2c.h"
 /*********************************************************************************************************

@@ -17,7 +17,6 @@
 
 #include <stdint.h>
 #include <stddef.h>
-#include "io.h"
 #include "dmac.h"
 
 #ifdef __cplusplus

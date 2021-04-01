@@ -22,13 +22,19 @@
 #include "SylixOS.h"
 #include <string.h>
 #include "video.h"
-#include "driver/common.h"
 #include "video_debug.h"
 
 #include "videoIoctl.h"
 #include "videoSubDev.h"
 #include "videoChannel.h"
 #include "videoDevice.h"
+
+/*********************************************************************************************************
+  宏定义
+*********************************************************************************************************/
+#define container_of(ptr, type, member) ({ \
+        const typeof( ((type *)0)->member ) *__mptr = (ptr); \
+        (type *)( (char *)__mptr - offsetof(type,member) );})
 /*********************************************************************************************************
   全局变量
 *********************************************************************************************************/
@@ -137,7 +143,6 @@ static INT __formatDescriptionGet (PLW_VIDEO_IOCTL_OPS  pIoctls,
                                    PLW_FD_ENTRY         pFdEntry,
                                    video_format_desc   *pVideoFormatDesc)
 {
-    UINT                    uiIndex;
     PLW_VIDEO_DEVICE        pVideoDevice   =  (PLW_VIDEO_DEVICE)pFdEntry->FDENTRY_pdevhdrHdr;
     PLW_VIDEO_DEVICE_DRV    pVideoDevDrv   =  pVideoDevice->VIDEO_pVideoDriver;
 
@@ -158,14 +163,6 @@ static INT __formatDescriptionGet (PLW_VIDEO_IOCTL_OPS  pIoctls,
         _PrintFormat("[video_format_desc]: framework not support this format now.\r\n");
         return  (ERROR_NONE);
     }
-
-//    video_debug("index: %d\r\n", pVideoFormatDesc->index);
-//    uiIndex = pVideoDevice->VIDEO_pFormatsIdArray[pVideoFormatDesc->index];
-//    video_debug("uiIndex: %d\r\n", uiIndex);
-//    strncpy(pVideoFormatDesc->description,                              /* 注意: 当前未支持所有格式查询 */
-//            _G_video_format_desc_table[uiIndex],
-//            strlen(_G_video_format_desc_table[uiIndex]));
-//    pVideoFormatDesc->format = (CHAR)_G_video_format_type_table[uiIndex];
 
     strncpy(pVideoFormatDesc->description,
             "VIDEO_PIXEL_FORMAT_RGB_565",

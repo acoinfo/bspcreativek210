@@ -12,18 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define  __SYLIXOS_KERNEL
-#define  __SYLIXOS_STDIO
-#include "SylixOS.h"
 #include "config.h"
+#include "common.h"
 #include "driver/clock/k210_clock.h"
-#include "driver/common.h"
 
 #include "timer.h"
 #include "pwm.h"
 #include <stddef.h>
 #include "plic.h"
-#include "io.h"
 
 void pwm_init(pwm_device_number_t pwm_number)
 {

@@ -23,10 +23,10 @@
 #include "config.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/dmac/k210_dma.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/dmac.h"
 #include "KendryteWare/include/fpioa.h"
 #include "KendryteWare/include/plic.h"

@@ -28,10 +28,10 @@
 #include "k210_kpu.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
-#include "driver/common.h"
-
 #include "driver/lcd/lcd.h"
 #include "driver/kpu/cnn.h"
+
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/dmac.h"
 /*********************************************************************************************************
   CNN 中断处理函数

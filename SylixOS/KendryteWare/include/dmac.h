@@ -16,7 +16,6 @@
 #define _DRIVER_DMAC_H
 
 #include <stdint.h>
-#include "io.h"
 #include "stdbool.h"
 #include "plic.h"
 

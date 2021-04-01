@@ -24,9 +24,10 @@
 #include "config.h"
 #include <string.h>
 #include "k210_dvp.h"
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
+
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/dvp.h"
 #include "KendryteWare/include/plic.h"
 #include "KendryteWare/include/fpioa.h"

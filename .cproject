@@ -15,14 +15,21 @@
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-		<pathentry base-ref="bspcreativek210" include="E:/SiFive/sylixos-base-net/libsylixos/SylixOS/include/network" kind="inc" path="" system="true"/>
-		<pathentry base-ref="bspcreativek210" include="D:/ACOINFO/RealEvo/compiler/riscv-sylixos-toolchain/riscv-sylixos-embed/include" kind="inc" path="" system="true"/>
-		<pathentry base-ref="bspcreativek210" include="SylixOS/KendryteWare/include" kind="inc" path="" system="true"/>
-		<pathentry base-ref="bspcreativek210" include="E:/SiFive/sylixos-base-net/libsylixos/SylixOS" kind="inc" path="" system="true"/>
-		<pathentry base-ref="bspcreativek210" include="E:/SiFive/sylixos-base-net/libsylixos/SylixOS/include" kind="inc" path="" system="true"/>
+		<pathentry kind="mac" name="__GNUC__" path="" value="4"/>
+		<pathentry kind="mac" name="SYLIXOS" path="" value=""/>
+		<pathentry kind="mac" name="__riscv" path="" value=""/>
+		<pathentry kind="mac" name="__BOOT_INROM" path="" value="1"/>
+		<pathentry kind="mac" name="__SYLIXOS_LITE" path="" value=""/>
 		<pathentry base-ref="bspcreativek210" include="SylixOS" kind="inc" path="" system="true"/>
 		<pathentry base-ref="bspcreativek210" include="SylixOS/bsp" kind="inc" path="" system="true"/>
+		<pathentry base-ref="bspcreativek210" include="SylixOS/KendryteWare/include" kind="inc" path="" system="true"/>
 		<pathentry base-ref="bspcreativek210" include="SylixOS/liblvgl" kind="inc" path="" system="true"/>
+		<pathentry base-ref="bspcreativek210" include="E:/workspace_riscv/base_lite/libsylixos/SylixOS" kind="inc" path="" system="true"/>
+		<pathentry base-ref="bspcreativek210" include="E:/workspace_riscv/base_lite/libsylixos/SylixOS/include" kind="inc" path="" system="true"/>
 		<pathentry base-ref="bspcreativek210" include="D:/ACOINFO/RealEvo/compiler/riscv-sylixos-toolchain/lib/gcc/riscv-sylixos-embed/7.2.0/include" kind="inc" path="" system="true"/>
+		<pathentry base-ref="bspcreativek210" include="D:/ACOINFO/RealEvo/compiler/riscv-sylixos-toolchain/riscv-sylixos-embed/include" kind="inc" path="" system="true"/>
+		<pathentry base-ref="bspcreativek210" include="E:/workspace_riscv/base_lite/libsylixos/SylixOS/include/network" kind="inc" path="" system="true"/>
+		<pathentry excluding="obj|dep" kind="out" path="Debug"/>
+		<pathentry excluding="obj|dep" kind="out" path="Release"/>
 	</storageModule>
 </cproject>

@@ -25,11 +25,11 @@
 #include <math.h>
 #include <string.h>
 #include <linux/compat.h>
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
 #include "driver/watchdog/k210_watchdog.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/wdt.h"
 /*********************************************************************************************************
   ∂®“Â

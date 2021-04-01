@@ -26,12 +26,12 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
 #include "k210_dvp.h"
 #include "k210_sccb.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/dvp.h"
 /*********************************************************************************************************
   ov5640 ¼Ä´æÆ÷³õÊ¼»¯±í

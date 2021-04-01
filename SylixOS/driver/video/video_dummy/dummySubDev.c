@@ -23,7 +23,6 @@
 #include "SylixOS.h"
 #include "config.h"
 #include <string.h>
-#include "driver/common.h"
 
 #include "dummySubDev.h"
 #include "driver/video/video-core/video_fw.h"

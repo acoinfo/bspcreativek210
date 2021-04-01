@@ -21,8 +21,8 @@
 #define  __SYLIXOS_KERNEL
 #include "SylixOS.h"
 #include <string.h>
+#include <stdio.h>
 #include "video.h"
-#include "driver/common.h"
 #include "video_debug.h"
 
 #include "videoChannel.h"

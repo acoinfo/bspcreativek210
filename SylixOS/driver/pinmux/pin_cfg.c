@@ -20,7 +20,7 @@
 #include "pin_cfg.h"
 #include "fpioa.h"
 
-#include "driver/common.h"
+#include "KendryteWare/include/common.h"
 
 const fpioa_cfg_t __attribute__((weak)) g_fpioa_cfg =
 {

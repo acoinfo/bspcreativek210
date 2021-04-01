@@ -25,9 +25,9 @@
 #include <string.h>
 #include "k210_i2s.h"
 #include "driver/clock/k210_clock.h"
-#include "driver/common.h"
 #include "driver/fix_arch_def.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/i2s.h"
 #include "KendryteWare/include/dmac.h"
 /*********************************************************************************************************
@@ -166,6 +166,8 @@ static ssize_t  __k210I2sWrite (PLW_FD_ENTRY      pFdEntry,
     } else {
         bNonBlock = LW_FALSE;
     }
+
+    (void)bNonBlock;
 
     i2s_send_data(pI2sController->I2SC_uiDevId,
                   pI2sController->I2SC_uiChannel,

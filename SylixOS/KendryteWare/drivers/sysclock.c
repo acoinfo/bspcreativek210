@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define  __SYLIXOS_KERNEL
-#define  __SYLIXOS_STDIO
-#include "SylixOS.h"
 #include "config.h"
+#include "common.h"
 #include "driver/clock/k210_clock.h"
 
 #include "stdio.h"

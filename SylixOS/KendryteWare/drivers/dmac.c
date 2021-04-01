@@ -12,12 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define  __SYLIXOS_KERNEL
-#define  __SYLIXOS_STDIO
-#include "SylixOS.h"
 #include "config.h"
+#include "common.h"
 #include "driver/clock/k210_clock.h"
-#include "driver/common.h"
 
 #include <stdint.h>
 #include <stddef.h>
@@ -595,26 +592,6 @@ void dmac_init(void)
     tmp &= ~0xf;
     writeq(tmp, &dmac->chen);
     /* disable all channel before configure */
-}
-
-static void list_add(struct list_head_t *new, struct list_head_t *prev,
-        struct list_head_t *next)
-{
-    next->prev = new;
-    new->next = next;
-    new->prev = prev;
-    prev->next = new;
-}
-
-static void list_add_tail(struct list_head_t *new, struct list_head_t *head)
-{
-    list_add(new, head->prev, head);
-}
-
-static void INIT_LIST_HEAD(struct list_head_t *list)
-{
-    list->next = list;
-    list->prev = list;
 }
 
 void dmac_link_list_item(dmac_channel_number_t channel_num,

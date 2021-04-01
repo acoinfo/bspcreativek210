@@ -22,7 +22,6 @@
 #include "SylixOS.h"
 #include <string.h>
 #include "video.h"
-#include "driver/common.h"
 #include "video_debug.h"
 
 #include "videoDevice.h"
@@ -297,16 +296,6 @@ INT API_VideoDeviceSubDevUninstall (PLW_VIDEO_CARD_SUBDEV  pSubDevice)
         pSubDevice->SUBDEV_pInternalOps->unbind(pSubDevice);
     }
     pSubDevice->SUBDEV_pCardDevice = NULL;
-
-    /*  如果 subdev 实际上是一个 i2c_client, 那么注销 i2c_client */
-#if 0 /* IS_ENABLED(CONFIG_I2C) */
-    if (pSubDevice->SUBDEV_clientBusType & SUBDEV_BUS_TYPE_I2C) {
-        PLW_I2C_DEVICE pI2cDevice = pSubDevice->SUBDEV_pBusClient;
-        if (pI2cDevice) {
-            API_I2cDeviceDelete(pI2cDevice);
-        }
-    }
-#endif
 
     return  (ERROR_NONE);
 }

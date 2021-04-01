@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define  __SYLIXOS_KERNEL
-#define  __SYLIXOS_STDIO
-#include "SylixOS.h"
 #include "config.h"
+#include "common.h"
 
 #include <stddef.h>
 
@@ -45,3 +43,24 @@ uint32_t get_gpio_bit(volatile uint32_t *bits, size_t offset)
     return get_bit(bits, 1, offset);
 }
 
+uint32_t get_bit_mask(volatile uint32_t* bits, uint32_t mask)
+{
+    return (*bits) & mask;
+}
+
+void set_bit_mask(volatile uint32_t* bits, uint32_t mask, uint32_t value)
+{
+    uint32_t org = (*bits) & ~mask;
+    *bits = org | (value & mask);
+}
+
+uint32_t get_bit_idx(volatile uint32_t* bits, size_t idx)
+{
+    return ((*bits) & (1 << idx)) >> idx;
+}
+
+void set_bit_idx(volatile uint32_t* bits, size_t idx, uint32_t value)
+{
+    uint32_t org = (*bits) & ~(1 << idx);
+    *bits = org | (value << idx);
+}

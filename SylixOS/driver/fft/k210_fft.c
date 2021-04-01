@@ -24,9 +24,9 @@
 #include "SylixOS.h"
 #include <string.h>
 #include "k210_fft.h"
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/fft.h"
 #include "KendryteWare/include/dmac.h"
 #include "KendryteWare/include/plic.h"

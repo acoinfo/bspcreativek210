@@ -22,7 +22,6 @@
 #include "SylixOS.h"
 #include <string.h>
 #include "video.h"
-#include "driver/common.h"
 #include "video_debug.h"
 
 #include "videoAsync.h"
@@ -35,6 +34,12 @@ static LW_OBJECT_HANDLE     _G_hListLock         = LW_OBJECT_HANDLE_INVALID;
 static LW_LIST_LINE_HEADER  _G_asyncNotifierList = LW_NULL;
 static LW_LIST_LINE_HEADER  _G_asyncDeviceList   = LW_NULL;
 /*********************************************************************************************************
+  宏定义
+*********************************************************************************************************/
+#define container_of(ptr, type, member) ({ \
+        const typeof( ((type *)0)->member ) *__mptr = (ptr); \
+        (type *)( (char *)__mptr - offsetof(type,member) );})
+/*********************************************************************************************************
   宏操作
 *********************************************************************************************************/
 #define __VIDEO_LIST_LOCK()      API_SemaphoreBPend(_G_hListLock, LW_OPTION_WAIT_INFINITE)
@@ -42,84 +47,6 @@ static LW_LIST_LINE_HEADER  _G_asyncDeviceList   = LW_NULL;
 
 #define ASYNC_MATCH_SUCESS      (1)
 #define ASYNC_MATCH_FAILED      (0)
-
-#if 0
-static PLW_VIDEO_CARD_SUBDEV  __doProbeOnSubDevList (PLW_MATCH_INFO pSubDevInfo)
-{
-    PLW_LIST_LINE           pNode;
-    PLW_VIDEO_CARD_SUBDEV   pSubDevice = LW_NULL;
-
-    for (pNode = _G_asyncDeviceList; pNode; pNode = pNode->LINE_plistNext) {
-        pSubDevice = container_of(pNode, LW_VIDEO_CARD_SUBDEV, SUBDEV_lineNode);
-        if (lib_strcmp(pSubDevice->SUBDEV_bindCardName, pSubDevInfo->pMatchName) == 0) {
-            break;
-        }
-    }
-
-    return  (pSubDevice);
-}
-
-static INT  __tryToMatchSubDevice (PLW_ASYNC_NOTIFIER  pNotifier)
-{
-    INT                         index;
-    UINT                        uiSubDevNr;
-    PLW_MATCH_INFO              pSubDevInfo;
-    PLW_VIDEO_DEVICE            pVideoDevice;
-    PLW_VIDEO_CARD_SUBDEV       pSubDevice;
-
-    uiSubDevNr   = pNotifier->NOTIFY_uiSubDevNumbers;
-    pSubDevInfo  = pNotifier->NOTIFY_pMatchInfoArray;
-    pVideoDevice = pNotifier->NOTIFY_pVideoDevice;
-
-    for (index = 0; index < uiSubDevNr; ++index) {
-
-        pSubDevice = __doProbeOnSubDevList(pSubDevInfo);
-
-        if (pSubDevice) {
-            __VIDEO_LIST_LOCK();
-            _List_Line_Del(&pSubDevice->SUBDEV_lineNode, &_G_asyncDeviceList);
-            __VIDEO_LIST_UNLOCK();
-
-            API_SpinLock(&pVideoDevice->VIDEO_slSubDevLock);
-            _List_Line_Add_Ahead(&pSubDevice->SUBDEV_lineNode, &pVideoDevice->VIDEO_subDevList);
-            API_SpinUnlock(&pVideoDevice->VIDEO_slSubDevLock);
-
-           pNotifier->NOTIFY_uiSubDevNumbers++;
-           pNotifier->NOTIFY_pMatchInfoArray++;
-                                                                        /*  执行subdev被绑定的回调函数  */
-           if (pSubDevice->SUBDEV_pInternalOps && pSubDevice->SUBDEV_pInternalOps->bind) {
-               pSubDevice->SUBDEV_pInternalOps->bind(pSubDevice);
-           }
-
-        } else {
-            break;                                                      /*  匹配失败，未匹配到 subdev   */
-        }
-
-        pSubDevInfo++;
-    }
-
-    if (index != uiSubDevNr) {
-        __VIDEO_LIST_LOCK();
-        _List_Line_Add_Ahead(&pNotifier->NOTIFY_lineNode, &_G_asyncNotifierList);
-        __VIDEO_LIST_UNLOCK();
-                                                                        /*  等待再次去匹配剩余的 subdev */
-        API_SemaphoreBPend(pNotifier->NOTIFY_hListSignal, LW_OPTION_WAIT_INFINITE);
-        __tryToMatchSubDevice(pNotifier);
-    }
-
-    if (pNotifier->NOTIFY_hListSignal) {                                /*  释放用于匹配操作的信号量    */
-        API_SemaphoreBDelete(&pNotifier->NOTIFY_hListSignal);
-    }
-
-    if (pNotifier->NOTIFY_pfuncComplete) {                              /*  执行匹配完成后的回调函数    */
-        pNotifier->NOTIFY_pfuncComplete(pNotifier);
-    }
-
-    return  (ERROR_NONE);
-}
-#endif
-
-/* ==================================================================================================== */
 
 static INT __tryToMatchNotifier(PLW_ASYNC_NOTIFIER  pNotifier, PLW_VIDEO_CARD_SUBDEV  pSubDevice)
 {

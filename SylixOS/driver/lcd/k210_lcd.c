@@ -23,14 +23,13 @@
 #include "SylixOS.h"
 #include "config.h"
 #include <linux/compat.h>
-#include "driver/common.h"
 #include "driver/fix_arch_def.h"
 #include "driver/clock/k210_clock.h"
-
 #include "driver/lcd/k210_lcd.h"
 #include "driver/lcd/lcd.h"
 #include "driver/lcd/nt35310.h"
 
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/fpioa.h"
 /*********************************************************************************************************
   ∫Í∂®“Â

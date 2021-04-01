@@ -44,7 +44,6 @@ SylixOS/KendryteWare/drivers/gpio.c \
 SylixOS/KendryteWare/drivers/gpiohs.c \
 SylixOS/KendryteWare/drivers/i2c.c \
 SylixOS/KendryteWare/drivers/i2s.c \
-SylixOS/KendryteWare/drivers/io.c \
 SylixOS/KendryteWare/drivers/plic.c \
 SylixOS/KendryteWare/drivers/pwm.c \
 SylixOS/KendryteWare/drivers/rtc.c \

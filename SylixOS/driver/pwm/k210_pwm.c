@@ -25,8 +25,9 @@
 #include <string.h>
 #include "k210_pwm.h"
 #include "driver/clock/k210_clock.h"
-#include "driver/common.h"
 #include "driver/fix_arch_def.h"
+
+#include "KendryteWare/include/common.h"
 #include "KendryteWare/include/pwm.h"
 /*********************************************************************************************************
   ∂®“Â

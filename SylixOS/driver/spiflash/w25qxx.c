@@ -16,9 +16,9 @@
 #define  __SYLIXOS_STDIO
 #include "SylixOS.h"
 #include "config.h"
-#include "driver/common.h"
 #include "driver/clock/k210_clock.h"
 #include "driver/fix_arch_def.h"
+#include "KendryteWare/include/common.h"
 
 #include "w25qxx.h"
 #include "fpioa.h"
